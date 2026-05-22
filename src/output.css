@@ -7,8 +7,12 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-green-100: oklch(96.2% 0.044 156.743);
+    --color-gray-100: oklch(96.7% 0.003 264.542);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-white: #fff;
     --spacing: 0.25rem;
+    --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -162,6 +166,9 @@
   }
 }
 @layer utilities {
+  .relative {
+    position: relative;
+  }
   .m-auto {
     margin: auto;
   }
@@ -180,6 +187,9 @@
   .table {
     display: table;
   }
+  .w-50 {
+    width: calc(var(--spacing) * 50);
+  }
   .w-\[90\%\] {
     width: 90%;
   }
@@ -189,17 +199,29 @@
   .resize {
     resize: both;
   }
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
   .justify-between {
     justify-content: space-between;
   }
-  .rounded-\[0px\] {
-    border-radius: 0px;
+  .justify-center {
+    justify-content: center;
   }
-  .rounded-\[10px\] {
-    border-radius: 10px;
+  .gap-5 {
+    gap: calc(var(--spacing) * 5);
+  }
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
   }
   .rounded-\[20px\] {
     border-radius: 20px;
+  }
+  .rounded-\[25px\] {
+    border-radius: 25px;
   }
   .border {
     border-style: var(--tw-border-style);
@@ -207,6 +229,12 @@
   }
   .bg-\[\#24AB70\] {
     background-color: #24AB70;
+  }
+  .bg-\[\#24AB700A\] {
+    background-color: #24AB700A;
+  }
+  .bg-white {
+    background-color: var(--color-white);
   }
   .p-2 {
     padding: calc(var(--spacing) * 2);
@@ -217,17 +245,21 @@
   .p-\[3px_10px\] {
     padding: 3px 10px;
   }
-  .p-\[5px_10px\] {
-    padding: 5px 10px;
-  }
-  .p-\[5px_\] {
-    padding: 5px ;
-  }
-  .p-\[20px\] {
-    padding: 20px;
+  .p-\[10px_0\] {
+    padding: 10px 0;
   }
   .p-\[20px_0\] {
     padding: 20px 0;
+  }
+  .text-\[30px\] {
+    font-size: 30px;
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
   }
   .text-white {
     color: var(--color-white);
@@ -238,6 +270,21 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
+  }
+  .lg\:absolute {
+    @media (width >= 64rem) {
+      position: absolute;
+    }
+  }
+  .lg\:bottom-10 {
+    @media (width >= 64rem) {
+      bottom: calc(var(--spacing) * 10);
+    }
+  }
+  .lg\:left-30 {
+    @media (width >= 64rem) {
+      left: calc(var(--spacing) * 30);
+    }
   }
   .lg\:\!hidden {
     @media (width >= 64rem) {
@@ -254,9 +301,19 @@
       display: flex;
     }
   }
-  .lg\:hidden {
+  .lg\:w-250 {
     @media (width >= 64rem) {
-      display: none;
+      width: calc(var(--spacing) * 250);
+    }
+  }
+  .lg\:max-w-300 {
+    @media (width >= 64rem) {
+      max-width: calc(var(--spacing) * 300);
+    }
+  }
+  .lg\:flex-row {
+    @media (width >= 64rem) {
+      flex-direction: row;
     }
   }
   .lg\:items-center {
@@ -269,11 +326,20 @@
       gap: calc(var(--spacing) * 5);
     }
   }
+  .lg\:text-\[60px\] {
+    @media (width >= 64rem) {
+      font-size: 60px;
+    }
+  }
 }
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-outline-style {
   syntax: "*";
@@ -284,6 +350,7 @@
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
       --tw-border-style: solid;
+      --tw-font-weight: initial;
       --tw-outline-style: solid;
     }
   }
