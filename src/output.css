@@ -270,6 +270,9 @@
   .p-\[20px_0\] {
     padding: 20px 0;
   }
+  .text-center {
+    text-align: center;
+  }
   .text-\[30px\] {
     font-size: 30px;
   }
@@ -340,6 +343,16 @@
   .lg\:flex {
     @media (width >= 64rem) {
       display: flex;
+    }
+  }
+  .lg\:w-50 {
+    @media (width >= 64rem) {
+      width: calc(var(--spacing) * 50);
+    }
+  }
+  .lg\:w-150 {
+    @media (width >= 64rem) {
+      width: calc(var(--spacing) * 150);
     }
   }
   .lg\:w-250 {
